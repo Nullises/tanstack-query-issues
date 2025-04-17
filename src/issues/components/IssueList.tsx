@@ -1,5 +1,5 @@
 import LoadingSpinner from "../../shared/components/LoadingSpinner";
-import useIssues from "../hooks/useissues";
+import useIssues from "../hooks/useIssues";
 import { IssueItem } from "./IssueItem";
 
 export const IssueList = () => {
