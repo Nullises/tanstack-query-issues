@@ -1,4 +1,4 @@
-import { IssueItem } from './IssueItem';
+import { IssueItem } from "./IssueItem";
 
 export const IssueList = () => {
   return (
@@ -11,7 +11,7 @@ export const IssueList = () => {
       </div>
 
       {/* Lista de issues */}
-      <div className="mt-4">
+      <div className="mt-4 animate-fadeIn">
         {[1, 2, 3].map((issue) => (
           <IssueItem key={issue} />
         ))}
