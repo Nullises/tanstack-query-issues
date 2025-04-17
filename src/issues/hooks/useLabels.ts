@@ -5,7 +5,7 @@ const useLabels = () => {
   const labelsQuery = useQuery({
     queryKey: ["labels"],
     queryFn: getLabels,
-    staleTime: 1000 * 60 * 60, // 1h
+    staleTime: 1000 * 60, // 1m
     // placeholderData: [
     //   {
     //     "id": 791921801,
