@@ -1,26 +1,39 @@
-import LoadingSpinner from "../../shared/components/LoadingSpinner";
-import useIssues from "../hooks/useIssues";
+import { Issue, State } from "../interfaces";
 import { IssueItem } from "./IssueItem";
 
-export const IssueList = () => {
-  const { issuesQuery } = useIssues();
+interface Props {
+  issues: Issue[];
+  state: State;
+  setState: (state: State) => void;
+}
 
-  const issues = issuesQuery.data ?? [];
-
-  if (issuesQuery.isLoading)
-    return (
-      <div className="flex justify-center text-center h-72">
-        <LoadingSpinner />
-      </div>
-    );
+export const IssueList = ({ issues, state, setState }: Props) => {
+  const onStateChange = (state: State) => {
+    setState(state);
+  };
 
   return (
     <>
       {/* Botones de All, Open, Closed */}
       <div className="flex gap-4">
-        <button className="btn active">All</button>
-        <button className="btn">Open</button>
-        <button className="btn">Closed</button>
+        <button
+          onClick={() => onStateChange(State.All)}
+          className={`btn ${state === State.All ? "active" : ""}`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => onStateChange(State.Open)}
+          className={`btn ${state === State.Open ? "active" : ""}`}
+        >
+          Open
+        </button>
+        <button
+          onClick={() => onStateChange(State.Close)}
+          className={`btn ${state === State.Close ? "active" : ""}`}
+        >
+          Closed
+        </button>
       </div>
 
       {/* Lista de issues */}
